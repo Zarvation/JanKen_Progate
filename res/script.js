@@ -16,11 +16,21 @@ let kertas = document.getElementById("kertas");
 
 if(localStorage.getItem("skorKen")){
     skorKen = localStorage.getItem("skorKen");
-    displaySkorKen.innerHTML = skorKen;
+    if (skorKen>=0){
+        displaySkorKen.innerHTML = skorKen;
+    }
+    else{
+        displaySkorKen.innerHTML = 0;
+    }
 }
 if(localStorage.getItem("skorPlayer")){
     skorPlayer = localStorage.getItem("skorPlayer");
-    displaySkorPlayer.innerHTML = skorPlayer;
+    if (skorPlayer>=0){
+        displaySkorPlayer.innerHTML = skorKen;
+    }
+    else{
+        displaySkorPlayer.innerHTML = 0;
+    }
 }
 
 startGame.addEventListener("click", ()=>{
@@ -106,14 +116,14 @@ function result(who){
     switch(who) {
         case "ken" :
             skorKen++;
+            localStorage.setItem("skorKen",skorKen);
             displaySkorKen.innerHTML = skorKen;
-            skorKen = localStorage.setItem("skorKen");
             console.log("Ninja Ken Menang");
             break;
         case "player" :
             skorPlayer++;
+            localStorage.setItem("skorPlayer",skorPlayer);
             displaySkorPlayer.innerHTML = skorPlayer;
-            skorPlayer = localStorage.setItem("skorPlayer");
             console.log("Anda Menang");
             break;
         default:
